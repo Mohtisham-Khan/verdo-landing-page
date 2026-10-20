@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  /* Verdo brand tokens */
+  --color-brand-green: #024f47;
+  --color-brand-green-dark: #034f46;
+  --color-brand-cream: #fbfadd;
+  --color-brand-ivory: #fffeeb;
+  --color-brand-dark: #1b1b1a;
+  --color-brand-off-white: #fefeff;
+
+  --background: #fefeff;
+  --foreground: #034f46;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+/* The Verdo design is light-only. Previously the OS dark-scheme value made
+   the body black underneath the light sections (overscroll flash). */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #fefeff;
+    --foreground: #034f46;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Inter Tight", Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-green);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
